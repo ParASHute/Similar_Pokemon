@@ -87,8 +87,9 @@ int main() {
                                 pHP -= demage(cSF);
                             }
                             if(Cdoing == 3){
-                                int dill = demage(pNF) - defence(cNF);
-                                cHP -= dill;
+                                int dill = demage(pNF) - defence(cND);
+                                if(dill > 0) cHP -= dill;
+                                else;
                             }
                             if(Cdoing == 4){
                                 cHP -= demage(pNF);
@@ -96,24 +97,32 @@ int main() {
                         }
                         if(Pdoing == 2){
                             if(Cdoing == 1){
-                                
+                                cHP -= demage(pSF);
+                                if(cHP < 0) break;
+                                pHP -= demage(cNF);
                             }
                             if(Cdoing == 2){
-                                
+                                cHP -= demage(pSF);
+                                if(cHP < 0) break;
+                                pHP -= demage(cSF);
                             }
                             if(Cdoing == 3){
-                                
+                                cHP -= demage(pSF);
                             }
                             if(Cdoing == 4){
-                                
+                                int dill = demage(pSF) - defence(cSD);
+                                if(dill > 0) cHP -= dill;
+                                else;
                             }
                         }
                         if(Pdoing == 3){
                             if(Cdoing == 1){
-                                
+                                int dill = demage(cNF) - defence(pND);
+                                if(dill > 0) pHP -= dill;
+                                else;
                             }
                             if(Cdoing == 2){
-                                
+                                pHP -= demage(cSF);
                             }
                             if(Cdoing == 3){
                                 
@@ -124,10 +133,12 @@ int main() {
                         }
                         if(Pdoing == 4){
                             if(Cdoing == 1){
-                                
+                                pHP -= demage(cNF);
                             }
                             if(Cdoing == 2){
-                                
+                                int dill = demage(cSF) - defence(pSD);
+                                if(dill > 0) pHP -= dill;
+                                else;
                             }
                             if(Cdoing == 3){
                                 
@@ -199,13 +210,13 @@ int main() {
                 }
                 if(pHP < 0) printf("패배 하였습니다. 게임을 다시 시작해 주십쇼");
                 if(cHP < 0){
+                    pHP = 100;
+                    cHP = 100;
                     printf("승리 하였습니다. 다음 스태이지를 진행 하시려면 'a'를 입력해 주십시오 : "); // 하기전에 +능력치 고르고
                     scanf("%c",&a);
                     if(a == 'a') continue;
                     else break;
                 }
-                pHP = 100;
-                cHP = 100;
             }
         }
         else{
