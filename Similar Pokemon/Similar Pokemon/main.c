@@ -54,7 +54,7 @@ int demage(int dem){ //내 방어력에 * 각 방어에 대한 난수 선언(10 
 //}
 int main() {
     char a;
-    printf("게임을 시작 하시려면  'A'를 입력해 주세요 : ");
+    printf("게임을 시작 하시려면 'A'를 입력해 주세요 : ");
     scanf("%c",&a);
     getchar();
     if(a == 'a' || a == 'A'){
@@ -72,9 +72,11 @@ int main() {
             for(int i = 0 ;i < 10; i++){
                 printf("stage %d\n",i+1);
                 while(1){
-                    int turn = 0, Player = 0, Computer = 0;
                     printf("내 HP : %d   컴퓨터의 HP : %d\n",pHP,cHP);
-                    if(who_fst(cSP, pSP) > 0){
+                    Pdoing = act(Pdoing);
+                    Cdoing = computer_act(Cdoing);
+                    int who = who_fst(cSP, pSP);
+                    if(who > 0){
                         if(Pdoing == 1){
                             if(Cdoing == 1){
                                 cHP -= demage(pNF);
@@ -89,7 +91,6 @@ int main() {
                             if(Cdoing == 3){
                                 int dill = demage(pNF) - defence(cND);
                                 if(dill > 0) cHP -= dill;
-                                else;
                             }
                             if(Cdoing == 4){
                                 cHP -= demage(pNF);
@@ -112,14 +113,12 @@ int main() {
                             if(Cdoing == 4){
                                 int dill = demage(pSF) - defence(cSD);
                                 if(dill > 0) cHP -= dill;
-                                else;
                             }
                         }
                         if(Pdoing == 3){
                             if(Cdoing == 1){
                                 int dill = demage(cNF) - defence(pND);
                                 if(dill > 0) pHP -= dill;
-                                else;
                             }
                             if(Cdoing == 2){
                                 pHP -= demage(cSF);
@@ -138,7 +137,6 @@ int main() {
                             if(Cdoing == 2){
                                 int dill = demage(cSF) - defence(pSD);
                                 if(dill > 0) pHP -= dill;
-                                else;
                             }
                             if(Cdoing == 3){
                                 
@@ -151,38 +149,49 @@ int main() {
                     else{
                         if(Pdoing == 1){
                             if(Cdoing == 1){
-                                
+                                pHP -= demage(cNF);
+                                if(pHP < 0) break;
+                                cHP -= demage(pNF);
                             }
                             if(Cdoing == 2){
-                                
+                                pHP -= demage(cSF);
+                                if(pHP < 0) break;
+                                cHP -= demage(pNF);
                             }
                             if(Cdoing == 3){
-                                
+                                int dill = demage(pNF) - defence(cND);
+                                if(dill > 0) cHP -= dill;
                             }
                             if(Cdoing == 4){
-                                
+                                cHP -= demage(pNF);
                             }
                         }
                         if(Pdoing == 2){
                             if(Cdoing == 1){
-                                
+                                cHP -= demage(pSF);
+                                if(cHP < 0) break;
+                                pHP -= demage(cNF);
                             }
                             if(Cdoing == 2){
-                                
+                                cHP -= demage(pSF);
+                                if(cHP < 0) break;
+                                pHP -= demage(cSF);
                             }
                             if(Cdoing == 3){
-                                
+                                cHP -= demage(pSF);
                             }
                             if(Cdoing == 4){
-                                
+                                int dill = demage(pSF) - defence(cSD);
+                                if(dill > 0) cHP -= dill;
                             }
                         }
                         if(Pdoing == 3){
                             if(Cdoing == 1){
-                                
+                                int dill = demage(cNF) - defence(pND);
+                                if(dill > 0) pHP -= dill;
                             }
                             if(Cdoing == 2){
-                                
+                                pHP -= demage(cSF);
                             }
                             if(Cdoing == 3){
                                 
@@ -193,10 +202,11 @@ int main() {
                         }
                         if(Pdoing == 4){
                             if(Cdoing == 1){
-                                
+                                pHP -= demage(cNF);
                             }
                             if(Cdoing == 2){
-                                
+                                int dill = demage(cSF) - defence(pSD);
+                                if(dill > 0) pHP -= dill;
                             }
                             if(Cdoing == 3){
                                 
