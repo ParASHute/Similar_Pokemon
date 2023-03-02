@@ -225,7 +225,8 @@ int main() {
                     cHP = 100;
                     printf("승리 하였습니다. \n다음 스태이지를 진행 하시려면 'A'를 입력해 주십시오 : "); // 하기전에 +능력치 고르고
                     scanf("%c",&a);
-                    if(a != 'a' || a != 'A') break;
+                    if(a == 'a' || a == 'A') continue;
+                    else break;
                 }
             }
         }
