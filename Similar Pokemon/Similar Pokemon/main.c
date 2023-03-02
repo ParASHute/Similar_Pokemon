@@ -80,12 +80,12 @@ int main() {
                         if(Pdoing == 1){
                             if(Cdoing == 1){
                                 cHP -= demage(pNF);
-                                if(cHP < 0) break;
+                                if(cHP <= 0) break;
                                 pHP -= demage(cNF);
                             }
                             if(Cdoing == 2){
                                 cHP -= demage(pNF);
-                                if(cHP < 0) break;
+                                if(cHP <= 0) break;
                                 pHP -= demage(cSF);
                             }
                             if(Cdoing == 3){
@@ -99,12 +99,12 @@ int main() {
                         if(Pdoing == 2){
                             if(Cdoing == 1){
                                 cHP -= demage(pSF);
-                                if(cHP < 0) break;
+                                if(cHP <= 0) break;
                                 pHP -= demage(cNF);
                             }
                             if(Cdoing == 2){
                                 cHP -= demage(pSF);
-                                if(cHP < 0) break;
+                                if(cHP <= 0) break;
                                 pHP -= demage(cSF);
                             }
                             if(Cdoing == 3){
@@ -112,13 +112,13 @@ int main() {
                             }
                             if(Cdoing == 4){
                                 int dill = demage(pSF) - defence(cSD);
-                                if(dill > 0) cHP -= dill;
+                                if(dill >= 0) cHP -= dill;
                             }
                         }
                         if(Pdoing == 3){
                             if(Cdoing == 1){
                                 int dill = demage(cNF) - defence(pND);
-                                if(dill > 0) pHP -= dill;
+                                if(dill >= 0) pHP -= dill;
                             }
                             if(Cdoing == 2){
                                 pHP -= demage(cSF);
